@@ -1,3 +1,4 @@
+//变异数组方法
 //手写push原理
 Array.prototype.push = function () {
   // console.log('自定义数组方法push');
@@ -52,4 +53,16 @@ Array.prototype.reverse = function () {
     later--;
   }
   return this;
+}
+//非变异数组方法
+//手写concat原理
+Array.prototype.concat = function () {
+  var oldArr = JSON.parse(JSON.stringify(this));
+ for(var i = 0; i < arguments.length; i++){
+   var newArr = arguments[i];
+   for(var j = 0; j < newArr.length; j++){
+     oldArr.push(newArr[j]);
+   }
+ }
+  return oldArr;
 }
